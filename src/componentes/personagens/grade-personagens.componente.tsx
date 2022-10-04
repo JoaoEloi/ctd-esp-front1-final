@@ -1,5 +1,7 @@
 import "./grade-personagem.css";
 import CardPersonagem from "./card-personagem.componente";
+import { ReactElement } from "react";
+import { useAppSelector } from "../../state/hooks";
 
 /**
  * Grade de personagens para a página inicial
@@ -9,12 +11,14 @@ import CardPersonagem from "./card-personagem.componente";
  *
  * @returns Elemento JSX
  */
-const GradePersonagem = () => {
+const GradePersonagem = (): ReactElement => {
+  const list = useAppSelector((state) => state.characters.list);
+
   return (
     <div className="grade-personagens">
-      <CardPersonagem />
-      <CardPersonagem />
-      <CardPersonagem />
+      {list.map((character) => (
+        <CardPersonagem key={character.id} character={character} />
+      ))}
     </div>
   );
 };

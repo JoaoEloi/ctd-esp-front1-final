@@ -1,4 +1,6 @@
-import GradePersonagens from "../componentes/personagens/grade-personagens.componente";
+import CardPersonagem from "../componentes/personagens/card-personagem.componente";
+import { useAppSelector } from "../state/hooks";
+import { ReactElement } from "react";
 
 /**
  * Esta é a página de favoritos. Aqui você deve ver todos os personagens marcados como favoritos
@@ -8,14 +10,18 @@ import GradePersonagens from "../componentes/personagens/grade-personagens.compo
  *
  * @returns Página de favoritos
  */
-const PaginaFavoritos = () => {
+const PaginaFavoritos = (): ReactElement => {
+  const favorites = useAppSelector((state) => state.characters.favorites);
   return (
     <div className="container">
       <div className="actions">
         <h3>Personagens Favoritos</h3>
+
         <button className="danger">Test Button</button>
       </div>
-      <GradePersonagens />
+      {favorites.map((favorite) => (
+        <CardPersonagem key={favorite.id} character={favorite} />
+      ))}
     </div>
   );
 };

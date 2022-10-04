@@ -1,6 +1,9 @@
 import Filtros from "../componentes/personagens/filtros.componente";
 import GradePersonagens from "../componentes/personagens/grade-personagens.componente";
 import Paginacao from "../componentes/paginacao/paginacao.componente";
+import { ReactElement, useEffect } from "react";
+import { useAppDispatch } from "../state/hooks";
+import { fetchCharacters } from "../state/characters";
 
 /**
  * Esta é a página principal. Aqui você deve ver o painel de filtro junto com a grade de personagens.
@@ -10,7 +13,12 @@ import Paginacao from "../componentes/paginacao/paginacao.componente";
  *
  * @returns Página inicio
  */
-const PaginaInicio = () => {
+const PaginaInicio = (): ReactElement => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCharacters());
+  }, []);
   return (
     <div className="container">
       <div className="actions">

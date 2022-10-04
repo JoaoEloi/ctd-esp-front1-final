@@ -1,9 +1,9 @@
-.card-personagem {
+.card-personagem-div {
   display: flex;
   flex-direction: column;
 }
 
-.card-personagem > img {
+.card-personagem-img {
   width: 300px;
   height: 300px;
   border-top-left-radius: 5px;
@@ -11,7 +11,7 @@
   border: 1px solid #d0d0d0;
 }
 
-.card-personagem > div.card-personagem-body {
+.card-personagem-body {
   padding: 10px;
   border: 1px solid #d0d0d0;
   border-top: 0;
@@ -22,4 +22,5 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-style: solid;
 }
